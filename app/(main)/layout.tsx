@@ -3,21 +3,18 @@ import PublicNavBar from "@/components/PublicNavBar";
 import { currentUser } from "@clerk/nextjs/server";
 
 export default async function MainLayout({
-    children, 
+  children,
 }: {
-    children: React.ReactNode
+  children: React.ReactNode;
 }) {
-    const user = await currentUser();
+  const user = await currentUser();
 
-    return (
-        <main className="relative">
-            {/* Render PrivateNavbar if user exists, otherwise PublicNavbar */}
-            {user ? <PrivateNavBar /> : <PublicNavBar />}
-            {/* <PublicNavBar /> */}
+  return (
+    <main className="relative">
+      {/* Render PrivateNavbar if user exists, otherwise PublicNavbar */}
+      {user ? <PrivateNavBar /> : <PublicNavBar />}
 
-            <section className="pt-36">
-                {children}
-            </section>
-        </main>
-    );
+      <section className="pt-36">{children}</section>
+    </main>
+  );
 }
